@@ -1,0 +1,12 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "CosmosDBURL":
+      "mongodb://<your-HOST-goes-here>:<your-PORT-goes-here>/?ssl=true",
+    "CosmosDBUser": "<your-USERNAME-goes-here>",
+    "CosmosDBPass": "<your-PASSWORD-goes-here>",
+    "CosmosDB": "<your-cosmos-db-name-goes-here>"
+  }
+}
