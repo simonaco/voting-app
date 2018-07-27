@@ -17,7 +17,7 @@ module.exports = function(context) {
       .then(res => {
         context.log('This is a happy moment');
         res.forEach(team => delete team._id);
-        const teams = { data: res };
+        const teams = res;
         context.res = {
           //status: 200,
           body: teams
