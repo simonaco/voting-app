@@ -31,25 +31,11 @@ namespace BubbleWar
             return response.Data.Teams;
         }
 
-        public static Task<HttpResponseMessage> VoteForRedTeam()
+        public static Task<HttpResponseMessage> VoteForTeam(TeamColor teamType)
         {
             var mutation = @"
                 mutation {
-                    incrementPoints(id:1) {
-                        id
-                        name
-                        points
-                    }
-                }";
-
-            return PostObjectToAPI(_bubbleWarUrl, mutation);
-        }
-
-        public static Task<HttpResponseMessage> VoteForGreenTeam()
-        {
-            var mutation = @"
-                mutation {
-                    incrementPoints(id:2) {
+                    incrementPoints(id:" + (int)teamType + @") {
                         id
                         name
                         points

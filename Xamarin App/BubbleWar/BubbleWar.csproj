@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
@@ -19,5 +19,6 @@
         <Folder Include="Services\" />
         <Folder Include="Services\Base\" />
         <Folder Include="Models\" />
+        <Folder Include="Enums\" />
     </ItemGroup>
 </Project>
