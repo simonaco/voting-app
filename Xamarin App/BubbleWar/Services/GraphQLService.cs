@@ -5,19 +5,26 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
+using Newtonsoft.Json;
+
 using Xamarin.Forms;
 
 namespace BubbleWar
 {
     public abstract class GraphQLSerqvice : BaseGraphQLService
     {
+        #region Constant Fields
         const string _bubbleWarUrl = "https://graphqlplayground.azurewebsites.net/api/VotingApp";
 
         readonly static Lazy<HttpClient> _clientHolder = new Lazy<HttpClient>(() => CreateHttpClient(TimeSpan.FromSeconds(10)));
+        #endregion
 
+        #region Properties
         static HttpClient Client => _clientHolder.Value;
+        #endregion
 
-        public static async Task<List<Team>> GetTeams()
+        #region Methods
+        public static async Task<List<TeamScore>> GetTeamScoreList()
         {
             var query = @"
                 query {
@@ -65,5 +72,20 @@ namespace BubbleWar
 
             return client;
         }
+        #endregion
+
+        #region Classes
+        class TeamsResponse
+        {
+            [JsonProperty("data")]
+            public TeamsData Data { get; set; }
+        }
+
+        class TeamsData
+        {
+            [JsonProperty("teams")]
+            public List<TeamScore> Teams { get; set; }
+        }
+        #endregion
     }
 }
