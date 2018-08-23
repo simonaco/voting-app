@@ -4,20 +4,22 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 
 namespace BubbleWar
 {
-    public abstract class GraphQLService : BaseGraphQLService
+    public abstract class GraphQLSerqvice : BaseGraphQLService
     {
-        const string _url = "https://graphqlplayground.azurewebsites.net/api/VotingApp";
+        const string _bubbleWarUrl = "https://graphqlplayground.azurewebsites.net/api/VotingApp";
+
         readonly static Lazy<HttpClient> _clientHolder = new Lazy<HttpClient>(() => CreateHttpClient(TimeSpan.FromSeconds(10)));
 
         static HttpClient Client => _clientHolder.Value;
 
         public static async Task<List<Team>> GetTeams()
         {
-            var requestContent = @"
+            var query = @"
                 query {
                     teams {
                         name
@@ -25,8 +27,36 @@ namespace BubbleWar
                     }
                 }";
 
-            var response = await PostObjectToAPI<TeamsResponse>(_url, requestContent).ConfigureAwait(false);
+            var response = await PostObjectToAPI<TeamsResponse>(_bubbleWarUrl, query).ConfigureAwait(false);
             return response.Data.Teams;
+        }
+
+        public static Task<HttpResponseMessage> VoteForRedTeam()
+        {
+            var mutation = @"
+                mutation {
+                    incrementPoints(id:1) {
+                        id
+                        name
+                        points
+                    }
+                }";
+
+            return PostObjectToAPI(_bubbleWarUrl, mutation);
+        }
+
+        public static Task<HttpResponseMessage> VoteForGreenTeam()
+        {
+            var mutation = @"
+                mutation {
+                    incrementPoints(id:2) {
+                        id
+                        name
+                        points
+                    }
+                }";
+
+            return PostObjectToAPI(_bubbleWarUrl, mutation);
         }
 
         static HttpClient CreateHttpClient(TimeSpan timeout)
