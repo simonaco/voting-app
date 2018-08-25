@@ -29,8 +29,14 @@ const root = {
 
 module.exports = function(context, req) {
   context.log(`GraphQL request: ${req.body}`);
+  let query;
+  if (req.body.query) {
+    query = req.body.query.replace(/(\r\n\t|\n|\r\t)/gm, '');
+  } else {
+    query = req.body;
+  }
 
-  graphql(typeDefs, req.body, root).then(response => {
+  graphql(typeDefs, query, root).then(response => {
     context.res = {
       body: response
     };
