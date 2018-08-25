@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DebugType>pdbonly</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Xamarin.Forms" Version="3.2.0.729530-pre2" />
+        <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="MainPage.xaml.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Services\" />
+        <Folder Include="Services\Base\" />
+        <Folder Include="Models\" />
+        <Folder Include="Enums\" />
+        <Folder Include="Pages\" />
+        <Folder Include="ViewModels\" />
+    </ItemGroup>
+</Project>
