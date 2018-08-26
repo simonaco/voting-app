@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "apollo-boost": "^0.1.14",
+    "d3": "^3.5.17",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "react": "^16.4.2",
     "react-apollo": "^2.1.11",
+    "react-bubble-chart": "^0.4.0",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.5"
   },
