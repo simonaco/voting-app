@@ -2,9 +2,9 @@
 
 namespace BubbleWar
 {
-    public class VotingPage : BaseContentPage<VotingViewModel>
+    public class VotePage : BaseContentPage<VoteViewModel>
     {
-        public VotingPage()
+        public VotePage()
         {
             var greenScoreLabel = new Label();
             greenScoreLabel.SetBinding(Label.TextProperty, nameof(ViewModel.GreenScore));
@@ -48,6 +48,24 @@ namespace BubbleWar
             grid.Children.Add(voteRedTeamButton, 1, 1);
 
             Content = grid;
+
+            Title = "Vote";
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ViewModel.GraphQLConnectionFailed += HandleGraphQLConnectionFailed;
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            ViewModel.GraphQLConnectionFailed -= HandleGraphQLConnectionFailed;
+        }
+
+        void HandleGraphQLConnectionFailed(object sender, string message) => DisplayAlert("GraphQL Connection Failed", message, "OK");
     }
 }

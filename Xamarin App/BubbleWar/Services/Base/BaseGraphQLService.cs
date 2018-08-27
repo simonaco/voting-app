@@ -1,11 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Net;
-using System.Text;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 
@@ -128,7 +127,7 @@ namespace BubbleWar
             }
         }
 
-        static void Report(Exception e, [CallerMemberName]string callerMemberName = "") => DebugServices.Report(e, callerMemberName);
+        static void Report(Exception e, [CallerMemberName]string callerMemberName = "") => AppCenterService.Report(e, callerMemberName: callerMemberName);
         #endregion
     }
 }

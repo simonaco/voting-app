@@ -14,13 +14,12 @@ namespace BubbleWar
     public abstract class GraphQLSerqvice : BaseGraphQLService
     {
         #region Constant Fields
-        const string _bubbleWarUrl = "https://graphqlplayground.azurewebsites.net/api/VotingApp";
-
         readonly static Lazy<HttpClient> _clientHolder = new Lazy<HttpClient>(() => CreateHttpClient(TimeSpan.FromSeconds(10)));
         #endregion
 
         #region Properties
         static HttpClient Client => _clientHolder.Value;
+        static string BubbleWarUrl => GraphQLSettings.Uri.ToString();
         #endregion
 
         #region Methods
@@ -34,7 +33,7 @@ namespace BubbleWar
                     }
                 }";
 
-            var response = await PostObjectToAPI<TeamsResponse>(_bubbleWarUrl, query).ConfigureAwait(false);
+            var response = await PostObjectToAPI<TeamsResponse>(BubbleWarUrl, query).ConfigureAwait(false);
             return response.Data.Teams;
         }
 
@@ -49,7 +48,7 @@ namespace BubbleWar
                     }
                 }";
 
-            return PostObjectToAPI(_bubbleWarUrl, mutation);
+            return PostObjectToAPI(BubbleWarUrl, mutation);
         }
 
         static HttpClient CreateHttpClient(TimeSpan timeout)

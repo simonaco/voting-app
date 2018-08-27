@@ -2,15 +2,18 @@
 
 namespace BubbleWar
 {
-	public class App : Application
+    public class App : Application
     {
-        public App() => MainPage = new TabbedPage
+        public App()
         {
-            Children = 
+            MainPage = new TabbedPage
             {
-                new VotingPage(),
-                new SettingsPage()
-            }
-        };
+                Children =
+                {
+                    new VotePage(),
+                    new SettingsPage()
+                }
+            };
+        }
     }
 }
