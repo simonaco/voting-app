@@ -6,6 +6,9 @@ namespace BubbleWar
     {
         public VotePage()
         {
+            Padding = new Thickness(20);
+            Title = "Vote";
+
             var greenScoreLabel = new Label();
             greenScoreLabel.SetBinding(Label.TextProperty, nameof(ViewModel.GreenScore));
 
@@ -48,8 +51,6 @@ namespace BubbleWar
             grid.Children.Add(voteRedTeamButton, 1, 1);
 
             Content = grid;
-
-            Title = "Vote";
         }
 
         protected override void OnAppearing()
@@ -66,6 +67,7 @@ namespace BubbleWar
             ViewModel.GraphQLConnectionFailed -= HandleGraphQLConnectionFailed;
         }
 
-        void HandleGraphQLConnectionFailed(object sender, string message) => DisplayAlert("GraphQL Connection Failed", message, "OK");
+        void HandleGraphQLConnectionFailed(object sender, string message) =>
+            Device.BeginInvokeOnMainThread(() => DisplayAlert("GraphQL Connection Failed", message, "OK"));
     }
 }

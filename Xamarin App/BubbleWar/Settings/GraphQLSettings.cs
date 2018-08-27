@@ -13,7 +13,7 @@ namespace BubbleWar
         #region Properties
         public static Uri Uri
         {
-            get => _uri ?? (_uri = new Uri(Preferences.Get(nameof(Uri), "")));
+            get => _uri ?? (_uri = new Uri(Preferences.Get(nameof(Uri), "https://graphqlplayground.azurewebsites.net/api/graphql")));
             set
             {
                 _uri = value;

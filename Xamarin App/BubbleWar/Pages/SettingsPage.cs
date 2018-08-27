@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace BubbleWar
 {
-    public class SettingsPage : ContentPage
+    public class SettingsPage : BaseContentPage<SettingsViewModel>
     {
         readonly Editor _graphqlApiEndpointEditor;
 
@@ -26,7 +26,7 @@ namespace BubbleWar
             {
                 IsSpellCheckEnabled = false,
             };
-            _graphqlApiEndpointEditor.Completed += HandleDeviceConnectionStringEditorCompleted;
+            _graphqlApiEndpointEditor.Unfocused += HandleDeviceConnectionStringEditorCompleted;
 
             var createdByLabel = new Label
             {
@@ -43,6 +43,8 @@ namespace BubbleWar
                 RowDefinitions = {
                     new RowDefinition { Height = new GridLength(labelHeight, GridUnitType.Absolute) },
                     new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+                    new RowDefinition { Height = new GridLength(labelHeight, GridUnitType.Absolute) },
+                    new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }
                 },
                 ColumnDefinitions = {
                     new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }
@@ -51,7 +53,7 @@ namespace BubbleWar
 
             grid.Children.Add(graphqlApiEndpointLabel, 0, 0);
             grid.Children.Add(_graphqlApiEndpointEditor, 0, 1);
-            grid.Children.Add(createdByLabel, 0, 1);
+            grid.Children.Add(createdByLabel, 0, 3);
 
             Content = grid;
         }
@@ -64,7 +66,7 @@ namespace BubbleWar
             _graphqlApiEndpointEditor.Text = GraphQLSettings.Uri.ToString();
         }
 
-        void CreatedByLabelTapped() => DependencyService.Get<IDeepLinks>().OpenTwitter();
+        async void CreatedByLabelTapped() => await DependencyService.Get<IDeepLinks>().OpenTwitter().ConfigureAwait(false);
 
         void HandleDeviceConnectionStringEditorCompleted(object sender, EventArgs e)
         {
