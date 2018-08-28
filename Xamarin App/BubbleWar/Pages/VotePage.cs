@@ -2,19 +2,20 @@
 
 namespace BubbleWar
 {
-    public class VotingPage : BaseContentPage<VotingViewModel>
+    public class VotePage : BaseContentPage<VoteViewModel>
     {
-        public VotingPage()
+        public VotePage()
         {
-            var greenScoreLabel = new Label();
-            greenScoreLabel.SetBinding(Label.TextProperty, nameof(ViewModel.GreenScore));
+            Padding = new Thickness(20);
+            Title = "Vote";
 
-            var redScoreLabel = new Label();
-            redScoreLabel.SetBinding(Label.TextProperty, nameof(ViewModel.RedScore));
+            var scorePieChart = new TeamScorePieChart();
+            scorePieChart.SetBinding(TeamScorePieChart.ItemSourceProperty, nameof(ViewModel.TeamScoreCollection));
 
             var voteGreenTeamButton = new Button
             {
                 Text = "Vote",
+                TextColor = Color.White,
                 BackgroundColor = Color.Green,
                 CommandParameter = TeamColor.Green
             };
@@ -23,6 +24,7 @@ namespace BubbleWar
             var voteRedTeamButton = new Button
             {
                 Text = "Vote",
+                TextColor = Color.White,
                 BackgroundColor = Color.Red,
                 CommandParameter = TeamColor.Red
             };
@@ -30,6 +32,8 @@ namespace BubbleWar
 
             var grid = new Grid
             {
+                Margin = new Thickness(10),
+
                 RowDefinitions = {
                     new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
                     new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }
@@ -41,13 +45,30 @@ namespace BubbleWar
                 }
             };
 
-            grid.Children.Add(greenScoreLabel, 0, 0);
-            grid.Children.Add(redScoreLabel, 1, 0);
+            grid.Children.Add(scorePieChart, 0, 0);
+            Grid.SetColumnSpan(scorePieChart, 2);
 
             grid.Children.Add(voteGreenTeamButton, 0, 1);
             grid.Children.Add(voteRedTeamButton, 1, 1);
 
             Content = grid;
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ViewModel.GraphQLConnectionFailed += HandleGraphQLConnectionFailed;
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            ViewModel.GraphQLConnectionFailed -= HandleGraphQLConnectionFailed;
+        }
+
+        void HandleGraphQLConnectionFailed(object sender, string message) =>
+            Device.BeginInvokeOnMainThread(() => DisplayAlert("GraphQL Connection Failed", message, "OK"));
     }
 }
