@@ -14,6 +14,7 @@
         <PackageReference Include="Xamarin.Essentials" Version="0.10.0-preview" />
         <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.9.0" />
         <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.9.0" />
+        <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="16.2.0.46" />
     </ItemGroup>
     <ItemGroup>
         <Compile Remove="MainPage.xaml.cs" />
@@ -27,5 +28,6 @@
         <Folder Include="Pages\" />
         <Folder Include="ViewModels\" />
         <Folder Include="Constants\" />
+        <Folder Include="Views\" />
     </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -10,7 +11,7 @@ namespace BubbleWar
     public class VoteViewModel : BaseViewModel
     {
         #region Fields
-        int _redScore, _greenScore;
+        List<TeamScore> _teamScoreCollection = new List<TeamScore>();
         ICommand _voteButtonCommand, _updateScoreCommand;
         #endregion
 
@@ -26,16 +27,10 @@ namespace BubbleWar
         public ICommand VoteButtonCommand => _voteButtonCommand ??
             (_voteButtonCommand = new Command<TeamColor>(async teamColor => await ExecuteVoteButtonCommand(teamColor).ConfigureAwait(false)));
 
-        public int RedScore
+        public List<TeamScore> TeamScoreCollection
         {
-            get => _redScore;
-            set => SetProperty(ref _redScore, value);
-        }
-
-        public int GreenScore
-        {
-            get => _greenScore;
-            set => SetProperty(ref _greenScore, value);
+            get => _teamScoreCollection;
+            set => SetProperty(ref _teamScoreCollection, value);
         }
 
         ICommand UpdateScoreCommand => _updateScoreCommand ??
@@ -60,10 +55,7 @@ namespace BubbleWar
         {
             try
             {
-                var teamScoreList = await GraphQLSerqvice.GetTeamScoreList().ConfigureAwait(false);
-
-                RedScore = teamScoreList.Where(x => x.Color.Equals(TeamColor.Red))?.FirstOrDefault()?.Points ?? 0;
-                GreenScore = teamScoreList.Where(x => x.Color.Equals(TeamColor.Green))?.FirstOrDefault()?.Points ?? 0;
+                TeamScoreCollection = await GraphQLSerqvice.GetTeamScoreList().ConfigureAwait(false);
             }
             catch (Exception e)
             {
