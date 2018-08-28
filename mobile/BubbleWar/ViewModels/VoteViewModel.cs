@@ -57,6 +57,8 @@ namespace BubbleWar
             catch (Exception e)
             {
                 AppCenterService.Report(e);
+                GraphQLSettings.ShouldUpdateChartAutomatically = false;
+
                 OnGraphQLConnectionFailed(e.Message);
             }
         }
@@ -70,9 +72,9 @@ namespace BubbleWar
             catch (Exception e)
             {
                 AppCenterService.Report(e);
-                OnGraphQLConnectionFailed(e.Message);
-
                 GraphQLSettings.ShouldUpdateChartAutomatically = false;
+
+                OnGraphQLConnectionFailed(e.Message);
             }
         }
 

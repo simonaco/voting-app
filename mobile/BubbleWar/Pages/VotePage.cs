@@ -71,7 +71,15 @@ namespace BubbleWar
             ViewModel.GraphQLConnectionFailed -= HandleGraphQLConnectionFailed;
         }
 
-        void HandleGraphQLConnectionFailed(object sender, string message) =>
-            Device.BeginInvokeOnMainThread(() => DisplayAlert("GraphQL Connection Failed", message, "OK"));
+        void HandleGraphQLConnectionFailed(object sender, string message)
+        {
+            ViewModel.GraphQLConnectionFailed -= HandleGraphQLConnectionFailed;
+
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await DisplayAlert("GraphQL Connection Failed", message, "OK");
+                ViewModel.GraphQLConnectionFailed += HandleGraphQLConnectionFailed;
+            });
+        }
     }
 }
