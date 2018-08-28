@@ -10,5 +10,5 @@
 
 | Mobile OS | Installation Link |
 |-----------|-------------------|
-| iOS | https://install.appcenter.ms/orgs/bubble-war/apps/bubble-war-1/distribution_groups/sf%20graphql%20workshop |
-| Android | https://install.appcenter.ms/orgs/bubble-war/apps/bubble-war/distribution_groups/sf%20graphql%20workshop |
+| iOS | [Install iOS App](https://install.appcenter.ms/orgs/bubble-war/apps/bubble-war-1/distribution_groups/sf%20graphql%20workshop) |
+| Android | [Install Android App](https://install.appcenter.ms/orgs/bubble-war/apps/bubble-war/distribution_groups/sf%20graphql%20workshop) |
