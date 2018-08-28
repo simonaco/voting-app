@@ -12,11 +12,11 @@ namespace BubbleWar
     {
         #region Fields
         List<TeamScore> _teamScoreCollection = new List<TeamScore>();
-        ICommand _voteButtonCommand, _updateScoreCommand;
+        ICommand _voteButtonCommand, _startUpdateScoreTimerCommand, _updateScoreCommand;
         #endregion
 
         #region Constructors
-        public VoteViewModel() => UpdateScoreCommand?.Execute(null);
+        public VoteViewModel() => StartUpdateScoreTimerCommand?.Execute(null);
         #endregion
 
         #region Events
@@ -26,6 +26,13 @@ namespace BubbleWar
         #region Properties
         public ICommand VoteButtonCommand => _voteButtonCommand ??
             (_voteButtonCommand = new Command<TeamColor>(async teamColor => await ExecuteVoteButtonCommand(teamColor).ConfigureAwait(false)));
+
+        public ICommand StartUpdateScoreTimerCommand => _startUpdateScoreTimerCommand ??
+        (_startUpdateScoreTimerCommand = new Command(() => Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+        {
+            UpdateScoreCommand?.Execute(null);
+            return GraphQLSettings.ShouldUpdateChartAutomatically;
+        })));
 
         public List<TeamScore> TeamScoreCollection
         {
@@ -42,7 +49,7 @@ namespace BubbleWar
         {
             try
             {
-                await GraphQLSerqvice.VoteForTeam(teamColor).ConfigureAwait(false);
+                await GraphQLService.VoteForTeam(teamColor).ConfigureAwait(false);
                 await UpdateScores().ConfigureAwait(false);
             }
             catch (Exception e)
@@ -55,11 +62,12 @@ namespace BubbleWar
         {
             try
             {
-                TeamScoreCollection = await GraphQLSerqvice.GetTeamScoreList().ConfigureAwait(false);
+                TeamScoreCollection = await GraphQLService.GetTeamScoreList().ConfigureAwait(false);
             }
             catch (Exception e)
             {
                 OnGraphQLConnectionFailed(e.Message);
+                GraphQLSettings.ShouldUpdateChartAutomatically = false;
             }
         }
 

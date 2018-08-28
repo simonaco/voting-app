@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace BubbleWar
 {
-    public abstract class GraphQLSerqvice : BaseGraphQLService
+    public abstract class GraphQLService : BaseGraphQLService
     {
         #region Constant Fields
         readonly static Lazy<HttpClient> _clientHolder = new Lazy<HttpClient>(() => CreateHttpClient(TimeSpan.FromSeconds(10)));

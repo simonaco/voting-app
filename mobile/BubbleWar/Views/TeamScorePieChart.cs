@@ -25,6 +25,8 @@ namespace BubbleWar
         {
             TeamScorePieSeries = new PieSeries
             {
+                EnableSmartLabels = true,
+                EnableAnimation = true,
                 XBindingPath = nameof(TeamScore.Color),
                 YBindingPath = nameof(TeamScore.Points)
             };
@@ -44,7 +46,14 @@ namespace BubbleWar
         static void OnItemSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var teamScorePieChart = (TeamScorePieChart)bindable;
-            teamScorePieChart.TeamScorePieSeries.ItemsSource = newValue as List<TeamScore>;
+            var currentItemSource = (List<TeamScore>)teamScorePieChart.TeamScorePieSeries.ItemsSource;
+            var oldItemSource = (List<TeamScore>)oldValue;
+            var newItemSource = (List<TeamScore>)newValue;
+
+            if (oldItemSource?.Count > 0 && newItemSource?.Count > 0)
+                teamScorePieChart.TeamScorePieSeries.EnableAnimation = false;
+
+            teamScorePieChart.TeamScorePieSeries.ItemsSource = newItemSource;
 
             var colorModel = new ChartColorModel
             {
@@ -70,6 +79,7 @@ namespace BubbleWar
             }
 
             teamScorePieChart.TeamScorePieSeries.ColorModel = colorModel;
+            teamScorePieChart.TeamScorePieSeries.DataMarker = new ChartDataMarker { ShowLabel = true };
         }
         #endregion
     }
