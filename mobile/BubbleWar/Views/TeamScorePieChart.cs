@@ -25,6 +25,7 @@ namespace BubbleWar
         {
             TeamScorePieSeries = new PieSeries
             {
+                EnableAnimation = true,
                 XBindingPath = nameof(TeamScore.Color),
                 YBindingPath = nameof(TeamScore.Points)
             };
@@ -44,7 +45,13 @@ namespace BubbleWar
         static void OnItemSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var teamScorePieChart = (TeamScorePieChart)bindable;
-            teamScorePieChart.TeamScorePieSeries.ItemsSource = newValue as List<TeamScore>;
+            var oldItemSource = (List<TeamScore>)oldValue;
+            var newItemSource = (List<TeamScore>)newValue;
+
+            if (oldItemSource?.Count > 0 && newItemSource?.Count > 0)
+                teamScorePieChart.TeamScorePieSeries.EnableAnimation = false;
+
+            teamScorePieChart.TeamScorePieSeries.ItemsSource = newItemSource;
 
             var colorModel = new ChartColorModel
             {
