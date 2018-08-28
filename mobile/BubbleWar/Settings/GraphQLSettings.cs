@@ -20,6 +20,12 @@ namespace BubbleWar
                 Preferences.Set(nameof(Uri), value.ToString());
             }
         }
+
+        public static bool ShouldUpdateChartAutomatically
+        {
+            get => Preferences.Get(nameof(ShouldUpdateChartAutomatically), true);
+            set => Preferences.Set(nameof(ShouldUpdateChartAutomatically), value);
+        }
         #endregion
     }
 }

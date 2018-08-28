@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+﻿using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace BubbleWar
@@ -11,8 +12,8 @@ namespace BubbleWar
             {
                 Icon = "Settings",
                 Title = "Settings",
-                BarBackgroundColor = Xamarin.Forms.Color.White,
-                BarTextColor = Xamarin.Forms.Color.Black
+                BarBackgroundColor = Color.White,
+                BarTextColor = Color.Black
             };
 
             settingsNavigationPage.On<Xamarin.Forms.PlatformConfiguration.iOS>().SetPrefersLargeTitles(true);
@@ -27,6 +28,8 @@ namespace BubbleWar
             };
 
             tabbedPage.On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
+            tabbedPage.On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarItemColor(Color.Gray);
+            tabbedPage.On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarSelectedItemColor(Color.Black);
 
             MainPage = tabbedPage;
         }
