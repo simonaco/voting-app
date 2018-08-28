@@ -1,4 +1,4 @@
-# voting-app
+# Bubble War
 
 |CI Tool                    |Build Status|
 |---------------------------|---|
