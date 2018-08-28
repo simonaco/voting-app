@@ -8,6 +8,7 @@ namespace BubbleWar
         {
             Padding = new Thickness(20);
             Title = "Vote";
+            Icon = "Vote";
 
             var scorePieChart = new TeamScorePieChart();
             scorePieChart.SetBinding(TeamScorePieChart.ItemSourceProperty, nameof(ViewModel.TeamScoreCollection));

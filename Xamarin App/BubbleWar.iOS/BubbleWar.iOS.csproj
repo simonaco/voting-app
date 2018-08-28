@@ -177,4 +177,8 @@
   <ItemGroup>
     <Folder Include="Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Settings%402x.png" />
+    <BundleResource Include="Resources\Settings%403x.png" />
+  </ItemGroup>
 </Project>
