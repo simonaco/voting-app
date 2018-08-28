@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BubbleWar.iOS", "BubbleWar.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BubbleWar", "BubbleWar\BubbleWar.csproj", "{31B990A7-ED82-429F-B34A-69D1C5CA2547}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BubbleWar.Shared", "BubbleWar.Shared\BubbleWar.Shared.shproj", "{C8D78E93-A3D1-405B-9917-5F1448585DF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

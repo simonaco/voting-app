@@ -1,6 +1,8 @@
 ﻿using Foundation;
 using UIKit;
 
+using BubbleWar.Shared;
+
 namespace BubbleWar.iOS
 {
     [Register(nameof(AppDelegate))]
@@ -9,6 +11,9 @@ namespace BubbleWar.iOS
         public override bool FinishedLaunching(UIApplication uiApplication, NSDictionary launchOptions)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            SyncfusionServices.InitializeSyncfusion();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(uiApplication, launchOptions);
