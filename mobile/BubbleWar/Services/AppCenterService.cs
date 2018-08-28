@@ -33,9 +33,6 @@ namespace BubbleWar
                           [CallerLineNumber] int lineNumber = 0,
                           [CallerFilePath] string filePath = "")
         {
-            var exceptionType = exception.GetType().ToString();
-            var message = exception.Message;
-
             PrintException(exception, callerMemberName, lineNumber, filePath);
 
             Crashes.TrackError(exception, properties);

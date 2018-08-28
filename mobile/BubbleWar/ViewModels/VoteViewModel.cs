@@ -47,6 +47,8 @@ namespace BubbleWar
         #region Methods
         async Task ExecuteVoteButtonCommand(TeamColor teamColor)
         {
+            AppCenterService.TrackEvent(AppCenterConstants.VotingButtonTapped, nameof(TeamColor), teamColor.ToString());
+
             try
             {
                 await GraphQLService.VoteForTeam(teamColor).ConfigureAwait(false);
@@ -54,6 +56,7 @@ namespace BubbleWar
             }
             catch (Exception e)
             {
+                AppCenterService.Report(e);
                 OnGraphQLConnectionFailed(e.Message);
             }
         }
@@ -66,7 +69,9 @@ namespace BubbleWar
             }
             catch (Exception e)
             {
+                AppCenterService.Report(e);
                 OnGraphQLConnectionFailed(e.Message);
+
                 GraphQLSettings.ShouldUpdateChartAutomatically = false;
             }
         }

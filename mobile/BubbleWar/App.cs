@@ -33,5 +33,12 @@ namespace BubbleWar
 
             MainPage = tabbedPage;
         }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            AppCenterService.Start();
+        }
     }
 }

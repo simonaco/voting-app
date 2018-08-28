@@ -35,14 +35,14 @@ namespace BubbleWar.iOS
 
             DispatchQueue.MainQueue.DispatchAsync(() => visibleViewController.PresentViewControllerAsync(safariViewController, true));
 
-            AppCenterService.TrackEvent("Launched Twitter Profile", "Method", "SFSafariViewController");
+            AppCenterService.TrackEvent(AppCenterConstants.LaunchedTwitterProfile, AppCenterConstants.Method, AppCenterConstants.SFSafariViewController);
         }
 
         void OpenLinkInApp(NSUrl url)
         {
             DispatchQueue.MainQueue.DispatchAsync(() => UIApplication.SharedApplication.OpenUrl(url, new UIApplicationOpenUrlOptions { SourceApplication = "com.minnick.XamarinIoTWorkshop" }, null));
 
-            AppCenterService.TrackEvent("Launched Twitter Profile", "Method", "Twitter App");
+            AppCenterService.TrackEvent(AppCenterConstants.LaunchedTwitterProfile, AppCenterConstants.Method, AppCenterConstants.TwitterApp);
         }
 
         static Task<UIViewController> GetVisibleViewController()
