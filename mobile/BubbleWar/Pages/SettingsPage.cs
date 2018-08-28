@@ -86,11 +86,18 @@ namespace BubbleWar
         {
             base.OnAppearing();
 
+            AppCenterService.TrackEvent(AppCenterConstants.VotePageAppeared);
+
             _graphqlApiEndpointEditor.Text = GraphQLSettings.Uri.ToString();
             _shouldUpdateChartAutomaticallySwitch.IsToggled = GraphQLSettings.ShouldUpdateChartAutomatically;
         }
 
-        async void CreatedByLabelTapped() => await DependencyService.Get<IDeepLinks>().OpenTwitter().ConfigureAwait(false);
+        async void CreatedByLabelTapped()
+        {
+            AppCenterService.TrackEvent(AppCenterConstants.CreatedByLabelTapped);
+
+            await DependencyService.Get<IDeepLinks>().OpenTwitter().ConfigureAwait(false);
+        }
 
         void HandleDeviceConnectionStringEditorCompleted(object sender, EventArgs e)
         {
@@ -112,7 +119,7 @@ namespace BubbleWar
         {
             GraphQLSettings.ShouldUpdateChartAutomatically = e.Value;
 
-            if(e.Value)
+            if (e.Value)
             {
                 var tabbedPage = Application.Current.MainPage as TabbedPage;
                 var votePage = tabbedPage?.Children?.OfType<VotePage>()?.FirstOrDefault();

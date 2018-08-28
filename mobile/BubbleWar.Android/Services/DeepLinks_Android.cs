@@ -22,12 +22,12 @@ namespace BubbleWar.Droid
                 try
                 {
                     CurrentActivity.StartActivity(new Intent(Intent.ActionView, Android.Net.Uri.Parse(TwitterConstants.BrandonMinnickTwitterDeepLink)));
-                    AppCenterService.TrackEvent("Launched Twitter Profile", "Method", "Twitter App");
+                    AppCenterService.TrackEvent(AppCenterConstants.LaunchedTwitterProfile, AppCenterConstants.Method, AppCenterConstants.TwitterApp);
                 }
                 catch (ActivityNotFoundException)
                 {
                     OpenChromeCustomTabs(TwitterConstants.BrandonMinnickTwitterUrl);
-                    AppCenterService.TrackEvent("Launched Twitter Profile", "Method", "Android Custom Tabs");
+                    AppCenterService.TrackEvent(AppCenterConstants.LaunchedTwitterProfile, AppCenterConstants.Method, AppCenterConstants.AndroidCustomTabs);
                 }
             });
         }

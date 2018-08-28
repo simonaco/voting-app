@@ -60,6 +60,8 @@ namespace BubbleWar
             base.OnAppearing();
 
             ViewModel.GraphQLConnectionFailed += HandleGraphQLConnectionFailed;
+
+            AppCenterService.TrackEvent(AppCenterConstants.VotePageAppeared);
         }
 
         protected override void OnDisappearing()
