@@ -10,5 +10,5 @@
 
 | Mobile OS | Installation Link |
 |-----------|-------------------|
-| iOS | (Check Email for App Center Invite) |
+| iOS | [Install iOS App](./mobile/iOS_Download_Instructions.md) |
 | Android | [Install Android App](https://install.appcenter.ms/orgs/bubble-war/apps/bubble-war/distribution_groups/sf%20graphql%20workshop) |
