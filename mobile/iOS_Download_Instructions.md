@@ -1,6 +1,8 @@
 # iOS App Download Instructions
 
-We will use [App Center](https://appcenter.ms/?WT.mc_id=IntroToGraphQLWorkshop-github-bramin) to download the app to our mobile device. Users familiar with Xamarin are welcome to download the source code in this GitHub repo and manually build/deploy the iOS/Android app using [Visual Studio on PC](https://visualstudio.microsoft.com/vs/?WT.mc_id=IntroToGraphQLWorkshop-github-bramin) or [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/?WT.mc_id=IntroToGraphQLWorkshop-github-bramin)
+We will use [App Center](https://appcenter.ms/?WT.mc_id=IntroToGraphQLWorkshop-github-bramin) to download the app to our mobile device. 
+
+Users familiar with Xamarin are welcome to download the source code in this GitHub repo and manually build/deploy the iOS/Android app using [Visual Studio on PC](https://visualstudio.microsoft.com/vs/?WT.mc_id=IntroToGraphQLWorkshop-github-bramin) or [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/?WT.mc_id=IntroToGraphQLWorkshop-github-bramin)
 
 ## 1. Create an App Center account
 
@@ -19,6 +21,7 @@ We will use [App Center](https://appcenter.ms/?WT.mc_id=IntroToGraphQLWorkshop-g
 Each attendee will need to register with App Center
 
 1. Check your email for the App Center invitation
+   - I sent out an invite to all attendees prior to the workshop
    - If you haven't received an invite, [send me an email](mailto:brandon.minnick@microsoft.com?subject=Intro%20To%20GraphQL%20Workshop%20App%20Center%20Registration%20Request)
        - To: Brandon.Minnick@Microsoft.com
        - Subject: Intro to GraphQL App Center Registration Request
@@ -26,9 +29,9 @@ Each attendee will need to register with App Center
 
 2. On the invitation email, select **Sign Up**
 
-3. In the browser page that opened automatically, tap **Accept Invitation**
-
 ![App Center Invitation Email](https://user-images.githubusercontent.com/13558917/44817344-0ca12200-ab9a-11e8-8a41-946853714252.png)
+
+3. In the browser page that opened automatically, tap **Accept Invitation**
 
 ## 3. Register iOS Device
 
