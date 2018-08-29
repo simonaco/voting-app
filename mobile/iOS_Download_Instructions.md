@@ -1,11 +1,16 @@
 # iOS App Download Instructions
 
-## 1. Create an App Center account
-
 We will use [App Center](https://appcenter.ms/?WT.mc_id=IntroToGraphQLWorkshop-github-bramin) to download the app to our mobile device. Users familiar with Xamarin are welcome to download the source code in this GitHub repo and manually build/deploy the iOS/Android app using [Visual Studio on PC](https://visualstudio.microsoft.com/vs/?WT.mc_id=IntroToGraphQLWorkshop-github-bramin) or [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/?WT.mc_id=IntroToGraphQLWorkshop-github-bramin)
 
+## 1. Create an App Center account
+
 1. Navigate to [https://appcenter.ms](https://appcenter.ms)
-2. Choose **Continue with GitHub**, **Continue with Microsoft**, **Facebook**, **Google**, or **Create a new account** to create a new account
+2. Choose one of the following options to create a new account:
+    - **Continue with GitHub**
+    - **Continue with Microsoft**
+    - **Facebook**
+    - **Google**
+    - **Create a new account** 
 
 ![App Center Registration](https://user-images.githubusercontent.com/13558917/42402275-94801690-812e-11e8-8000-655b7f2f7ae7.png)
 
