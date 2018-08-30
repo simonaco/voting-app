@@ -20,14 +20,13 @@ Users familiar with Xamarin are welcome to download the source code in this GitH
 
 Each attendee will need to register with App Center
 
-1. Check your email for the App Center invitation
-   - I sent out an invite to all attendees prior to the workshop
-   - If you haven't received an invite, [send me an email](mailto:brandon.minnick@microsoft.com?subject=Intro%20To%20GraphQL%20Workshop%20App%20Center%20Registration%20Request)
-       - To: Brandon.Minnick@Microsoft.com
-       - Subject: Intro to GraphQL App Center Registration Request
-       - Body: [Blank]
+1. [Send me an email](mailto:brandon.minnick@microsoft.com?subject=Intro%20To%20GraphQL%20Workshop%20App%20Center%20Registration%20Request)
+    - I will send you an email invite to join the App Center group
+    - To: Brandon.Minnick@Microsoft.com
+    - Subject: Intro to GraphQL App Center Registration Request
+    - Body: [Blank]
 
-2. On the invitation email, select **Sign Up**
+2. Once you receive the email invite, select **Sign Up**
 
 ![App Center Invitation Email](https://user-images.githubusercontent.com/13558917/44817344-0ca12200-ab9a-11e8-8a41-946853714252.png)
 
