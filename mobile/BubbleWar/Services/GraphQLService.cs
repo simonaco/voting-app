@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
+﻿using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 using Newtonsoft.Json;
-
-using Xamarin.Forms;
 
 namespace BubbleWar
 {
     public abstract class GraphQLService : BaseGraphQLService
     {
-        #region Constant Fields
-        readonly static Lazy<HttpClient> _clientHolder = new Lazy<HttpClient>(() => CreateHttpClient(TimeSpan.FromSeconds(10)));
-        #endregion
-
         #region Properties
-        static HttpClient Client => _clientHolder.Value;
         static string BubbleWarUrl => GraphQLSettings.Uri.ToString();
         #endregion
 
@@ -33,8 +23,22 @@ namespace BubbleWar
                     }
                 }";
 
-            var response = await PostObjectToAPI<TeamsResponse>(BubbleWarUrl, query).ConfigureAwait(false);
+            var response = await PostObjectToAPI<QueryResponse>(BubbleWarUrl, query).ConfigureAwait(false);
             return response.Data.Teams;
+        }
+
+        public static async Task<TeamScore> VoteForTeamAndGetUpdatedScore(TeamColor teamType)
+        {
+            var mutation = @"
+                mutation {
+                    incrementPoints(id:" + (int)teamType + @") {
+                        name
+                        points
+                    }
+                }";
+
+            var response = await PostObjectToAPI<MutationResponse>(BubbleWarUrl, mutation).ConfigureAwait(false);
+            return response.Data.TeamScore;
         }
 
         public static Task<HttpResponseMessage> VoteForTeam(TeamColor teamType)
@@ -42,48 +46,36 @@ namespace BubbleWar
             var mutation = @"
                 mutation {
                     incrementPoints(id:" + (int)teamType + @") {
-                        id
-                        name
-                        points
                     }
                 }";
 
             return PostObjectToAPI(BubbleWarUrl, mutation);
         }
-
-        static HttpClient CreateHttpClient(TimeSpan timeout)
-        {
-            HttpClient client;
-            switch (Device.RuntimePlatform)
-            {
-                case Device.iOS:
-                case Device.Android:
-                    client = new HttpClient();
-                    break;
-                default:
-                    client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip });
-                    break;
-            }
-
-            client.Timeout = timeout;
-            client.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            return client;
-        }
         #endregion
 
         #region Classes
-        class TeamsResponse
+        class QueryResponse
         {
             [JsonProperty("data")]
-            public TeamsData Data { get; set; }
+            public QueryData Data { get; set; }
         }
 
-        class TeamsData
+        class QueryData
         {
             [JsonProperty("teams")]
             public List<TeamScore> Teams { get; set; }
+        }
+        
+        class MutationResponse
+        {
+            [JsonProperty("data")]
+            public MutationData Data { get; set; }
+        }
+
+        class MutationData
+        {
+            [JsonProperty("incrementPoints")]
+            public TeamScore TeamScore { get; set; }
         }
         #endregion
     }
