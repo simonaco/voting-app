@@ -26,7 +26,9 @@ Each attendee will need to register with App Center
     - Subject: Intro to GraphQL App Center Registration Request
     - Body: [Blank]
 
-2. Once you receive the email invite, select **Sign Up**
+2. On your iOS device, open the email invite
+3. On your iOS device, select the **Sign Up** link in the email
+    - **Note**: The sign up link must be opened in Safari. Other browsers, like Chrome, are incompatible.
 
 ![App Center Invitation Email](https://user-images.githubusercontent.com/13558917/44817344-0ca12200-ab9a-11e8-8a41-946853714252.png)
 
@@ -63,10 +65,21 @@ Apple does not allow users to download iOS apps that have not been previously re
 <img alt="Popup dialog" src="https://user-images.githubusercontent.com/13558917/42534697-3d8a9862-8442-11e8-9524-a8c2149d1f02.png" width="200px">
 
 9. Once the installation has completed, the device will return you back to the App Center Install page in Safari
-10. On the installation page in Safari, tap on **Xamarin IoT Workshop, iOS**
+10. On the installation page in Safari, tap on **Bubble War**
 
 <img alt="Bubble War, iOS" src="https://user-images.githubusercontent.com/13558917/44817831-8c7bbc00-ab9b-11e8-9995-b491ee8d914f.png" width="200px">
 
-11. On the installation page, confirm that it says **No releases for app**. Once I've added you to the app's Provisioning Profile, App Center will send you an email to download the app
+11. On the installation page, tap **Get**. 
 
-<img alt="No releases for app" src="https://user-images.githubusercontent.com/13558917/44817832-8d145280-ab9b-11e8-8a6b-c9f2b5e041e3.png" width="200px">
+<img alt="Get App" src="https://user-images.githubusercontent.com/13558917/44881974-4f303080-ac66-11e8-8968-b24d6d507f13.png" width="200px">
+
+12. Stand by while App Center prepares the app for download
+    - **Note:** This may take 5-10 minutes
+
+<img alt="Preparing App" src="https://user-images.githubusercontent.com/13558917/44881888-1001df80-ac66-11e8-8fdf-ac34b9f9478b.PNG" width="200px">
+
+13. Once prepartation has finished, tap **Install**
+
+<img alt="Preparing App" src="https://user-images.githubusercontent.com/13558917/44882083-bcdc5c80-ac66-11e8-8819-04826982a1b5.png" width="200px">
+
+14. The app is now installing to the iOS home screen
