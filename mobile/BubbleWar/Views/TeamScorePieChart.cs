@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 
 using Syncfusion.SfChart.XForms;
@@ -45,12 +44,15 @@ namespace BubbleWar
         #region Methods
         static void OnItemSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var teamScorePieChart = (TeamScorePieChart)bindable;
-            var currentItemSource = (List<TeamScore>)teamScorePieChart.TeamScorePieSeries.ItemsSource;
-            var oldItemSource = (List<TeamScore>)oldValue;
-            var newItemSource = (List<TeamScore>)newValue;
+            var teamScorePieChart = bindable as TeamScorePieChart;
+            var currentItemSource = teamScorePieChart?.TeamScorePieSeries?.ItemsSource as List<TeamScore>;
+            var oldItemSource = oldValue as List<TeamScore>;
+            var newItemSource = newValue as List<TeamScore>;
 
-            if (oldItemSource?.Count > 0 && newItemSource?.Count > 0)
+            if (teamScorePieChart is null || currentItemSource is null || oldItemSource is null || newItemSource is null)
+                return;
+
+            if (oldItemSource.Count > 0 && newItemSource.Count > 0)
                 teamScorePieChart.TeamScorePieSeries.EnableAnimation = false;
 
             teamScorePieChart.TeamScorePieSeries.ItemsSource = newItemSource;
