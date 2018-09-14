@@ -28,15 +28,17 @@ const root = {
 };
 
 module.exports = async function(context, req) {
-  context.log(`GraphQL request: ${req.body}`);
-  let query;
-  if (req.body.query) {
-    query = req.body.query.replace(/(\r\n\t|\n|\r\t)/gm, '');
-  } else {
-    query = req.body;
-  }
+  const body = req.body;
+  context.log(`GraphQL request: ${body}`);
 
-  await graphql(typeDefs, query, root).then(response => {
+  await graphql(
+    typeDefs,
+    body.query,
+    root,
+    null,
+    body.variables,
+    body.operationName
+  ).then(response => {
     context.res = {
       body: response
     };

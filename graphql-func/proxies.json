@@ -1,4 +1,12 @@
 {
   "$schema": "http://json.schemastore.org/proxies",
-  "proxies": {}
+  "proxies": {
+    "graphiql": {
+      "matchCondition": {
+        "methods": ["GET"],
+        "route": "/api/graphiql"
+      },
+      "backendUri": "https://graphqlvoting.blob.core.windows.net/static/index.html"
+    }
+  }
 }
