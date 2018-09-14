@@ -27,7 +27,7 @@ const root = {
   }
 };
 
-module.exports = function(context, req) {
+module.exports = async function(context, req) {
   context.log(`GraphQL request: ${req.body}`);
   let query;
   if (req.body.query) {
@@ -36,10 +36,9 @@ module.exports = function(context, req) {
     query = req.body;
   }
 
-  graphql(typeDefs, query, root).then(response => {
+  await graphql(typeDefs, query, root).then(response => {
     context.res = {
       body: response
     };
-    context.done();
   });
 };
