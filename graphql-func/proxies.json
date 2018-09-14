@@ -4,7 +4,7 @@
     "graphiql": {
       "matchCondition": {
         "methods": ["GET"],
-        "route": "/api/graphiql2"
+        "route": "/api/graphiql"
       },
       "backendUri": "https://graphqlvoting.blob.core.windows.net/static/index.html"
     }
