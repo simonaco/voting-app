@@ -15,32 +15,32 @@ const typeDefs = buildSchema(`
 `);
 
 const root = {
-  teams: (obj, args, context) => {
-    return axios
-      .get('https://graphqlvoting.azurewebsites.net/api/score')
-      .then(res => res.data);
+  teams: async () => {
+    let teams = await axios.get(
+      'https://graphqlvoting.azurewebsites.net/api/score'
+    );
+    return teams.data;
   },
-  incrementPoints: (obj, args, context) => {
-    return axios
-      .get(`https://graphqlvoting.azurewebsites.net/api/score/${obj.id}`)
-      .then(res => res.data);
+  incrementPoints: async obj => {
+    let response = await axios.get(
+      `https://graphqlvoting.azurewebsites.net/api/score/${obj.id}`
+    );
+
+    return response.data;
   }
 };
 
 module.exports = async function(context, req) {
   const body = req.body;
-  context.log(`GraphQL request: ${body}`);
-
-  await graphql(
+  let response = await graphql(
     typeDefs,
     body.query,
     root,
     null,
     body.variables,
     body.operationName
-  ).then(response => {
-    context.res = {
-      body: response
-    };
-  });
+  );
+  context.res = {
+    body: response
+  };
 };
