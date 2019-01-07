@@ -7,7 +7,7 @@ GraphiQL endpoint:
 
 Sample query:
 
-```json
+```
 query {
   teams {
     id
@@ -19,7 +19,7 @@ query {
 
 Sample mutation:
 
-```json
+```
 mutation {
   incrementPoints(id:2) {
     id
