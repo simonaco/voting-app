@@ -18,7 +18,7 @@ namespace BubbleWar
 
         #region Fields
         List<TeamScore> _teamScoreCollection = new List<TeamScore>();
-        ICommand _voteButtonCommand, _startUpdateScoreTimerCommand, _updateScoreCommand;
+        ICommand _voteButtonCommand, _startUpdateScoreTimerCommand;
         #endregion
 
         #region Constructors
