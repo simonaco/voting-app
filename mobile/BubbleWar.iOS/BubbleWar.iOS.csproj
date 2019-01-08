@@ -172,6 +172,12 @@
     <PackageReference Include="AsyncAwaitBestPractices.MVVM">
       <Version>2.1.0-pre1</Version>
     </PackageReference>
+    <PackageReference Include="Refit">
+      <Version>4.6.58</Version>
+    </PackageReference>
+    <PackageReference Include="Polly">
+      <Version>6.1.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="..\BubbleWar.Shared\BubbleWar.Shared.projitems" Label="Shared" Condition="Exists('..\BubbleWar.Shared\BubbleWar.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -16,6 +16,8 @@
         <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.12.0" />
         <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="16.4.0.46" />
         <PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="2.1.0-pre1" />
+        <PackageReference Include="Refit" Version="4.6.58" />
+        <PackageReference Include="Polly" Version="6.1.2" />
     </ItemGroup>
     <ItemGroup>
         <Compile Remove="MainPage.xaml.cs" />
@@ -23,7 +25,6 @@
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Services\" />
-        <Folder Include="Services\Base\" />
         <Folder Include="Models\" />
         <Folder Include="Enums\" />
         <Folder Include="Pages\" />
