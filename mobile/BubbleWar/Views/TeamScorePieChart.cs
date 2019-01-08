@@ -27,7 +27,8 @@ namespace BubbleWar
                 EnableSmartLabels = true,
                 EnableAnimation = true,
                 XBindingPath = nameof(TeamScore.Color),
-                YBindingPath = nameof(TeamScore.Points)
+                YBindingPath = nameof(TeamScore.Points),
+                ItemsSource = new List<TeamScore>()
             };
 
             Series.Add(TeamScorePieSeries);
@@ -35,13 +36,14 @@ namespace BubbleWar
         #endregion
 
         #region Properties
-        public static List<TeamScore> GetItemSource(BindableObject view) => (List<TeamScore>)view.GetValue(ItemSourceProperty);
-        public static void SetItemSource(BindableObject view, ReturnType value) => view.SetValue(ItemSourceProperty, value);
-
         public PieSeries TeamScorePieSeries { get; private set; }
         #endregion
 
         #region Methods
+
+        public static List<TeamScore> GetItemSource(BindableObject view) => (List<TeamScore>)view.GetValue(ItemSourceProperty);
+        public static void SetItemSource(BindableObject view, ReturnType value) => view.SetValue(ItemSourceProperty, value);
+
         static void OnItemSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var teamScorePieChart = bindable as TeamScorePieChart;
