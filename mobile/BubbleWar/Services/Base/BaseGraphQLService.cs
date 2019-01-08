@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Threading.Tasks;
 
 using Newtonsoft.Json;
@@ -29,13 +30,13 @@ namespace BubbleWar
         #endregion
 
         #region Methods
-        protected static async Task<T> PostObjectToAPI<T>(string apiUrl, string request)
+        protected static async Task<TResponse> PostObjectToAPI<TRequest, TResponse>(string apiUrl, TRequest data)
         {
-            using (var responseMessage = await PostObjectToAPI(apiUrl, request).ConfigureAwait(false))
-                return await DeserializeResponse<T>(responseMessage).ConfigureAwait(false);
+            using (var responseMessage = await PostObjectToAPI(apiUrl, data).ConfigureAwait(false))
+                return await DeserializeResponse<TResponse>(responseMessage).ConfigureAwait(false);
         }
 
-        protected static Task<HttpResponseMessage> PostObjectToAPI(string apiUrl, string request) => SendAsync(HttpMethod.Post, apiUrl, request);
+        protected static Task<HttpResponseMessage> PostObjectToAPI<T>(string apiUrl, T data) => SendAsync(HttpMethod.Post, apiUrl, data);
 
         static HttpClient CreateHttpClient(TimeSpan timeout)
         {
@@ -58,9 +59,32 @@ namespace BubbleWar
             return client;
         }
 
-        static async Task<HttpResponseMessage> SendAsync(HttpMethod httpMethod, string apiUrl, string requestData)
+        static async Task<HttpRequestMessage> GetHttpRequestMessage<T>(HttpMethod method, string apiUrl, T requestData = default)
         {
-            using (var httpRequestMessage = GetHttpRequestMessage(httpMethod, apiUrl, requestData))
+            var httpRequestMessage = new HttpRequestMessage(method, apiUrl);
+
+            switch (requestData)
+            {
+                case T data when !typeof(T).IsValueType && data == null:
+                    break;
+
+                case Stream stream:
+                    httpRequestMessage.Content = new StreamContent(stream);
+                    httpRequestMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                    break;
+
+                default:
+                    var stringPayload = await Task.Run(() => JsonConvert.SerializeObject(requestData)).ConfigureAwait(false);
+                    httpRequestMessage.Content = new StringContent(stringPayload, Encoding.UTF8, "application/json");
+                    break;
+            }
+
+            return httpRequestMessage;
+        }
+
+        static async Task<HttpResponseMessage> SendAsync<T>(HttpMethod httpMethod, string apiUrl, T requestData)
+        {
+            using (var httpRequestMessage = await GetHttpRequestMessage(httpMethod, apiUrl, requestData))
             {
                 try
                 {
@@ -92,16 +116,6 @@ namespace BubbleWar
                 Device.BeginInvokeOnMainThread(() => Application.Current.MainPage.IsBusy = false);
                 _networkIndicatorCount = 0;
             }
-        }
-
-        static HttpRequestMessage GetHttpRequestMessage(HttpMethod method, string apiUrl, string request)
-        {
-            var httpRequestMessage = new HttpRequestMessage(method, apiUrl)
-            {
-                Content = new StringContent(request)
-            };
-
-            return httpRequestMessage;
         }
 
         static async Task<T> DeserializeResponse<T>(HttpResponseMessage httpResponseMessage)

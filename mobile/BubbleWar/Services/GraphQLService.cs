@@ -15,57 +15,48 @@ namespace BubbleWar
         #region Methods
         public static async Task<List<TeamScore>> GetTeamScoreList()
         {
-            var query = @"
-                query {
-                    teams {
-                        name
-                        points
-                    }
-                }";
-
-            var response = await PostObjectToAPI<QueryResponse>(BubbleWarUrl, query).ConfigureAwait(false);
+            var response = await PostObjectToAPI<QueryRequest, QueryResponse>(BubbleWarUrl, new QueryRequest()).ConfigureAwait(false);
             return response.Data.Teams;
         }
 
         public static async Task<TeamScore> VoteForTeamAndGetUpdatedScore(TeamColor teamType)
         {
-            var mutation = @"
-                mutation {
-                    incrementPoints(id:" + (int)teamType + @") {
-                        name
-                        points
-                    }
-                }";
-
-            var response = await PostObjectToAPI<MutationResponse>(BubbleWarUrl, mutation).ConfigureAwait(false);
+            var response = await PostObjectToAPI<MutationRequest, MutationResponse>(BubbleWarUrl, new MutationRequest(teamType)).ConfigureAwait(false);
             return response.Data.TeamScore;
         }
 
-        public static Task<HttpResponseMessage> VoteForTeam(TeamColor teamType)
-        {
-            var mutation = @"
-                mutation {
-                    incrementPoints(id:" + (int)teamType + @") {
-                    }
-                }";
-
-            return PostObjectToAPI(BubbleWarUrl, mutation);
-        }
+        public static Task<HttpResponseMessage> VoteForTeam(TeamColor teamType) => PostObjectToAPI(BubbleWarUrl, new MutationRequest(teamType));
         #endregion
 
         #region Classes
+        class QueryRequest
+        {
+            [JsonProperty("query")]
+            public string Query => "{teams{id, name, points}}";
+        }
+
         class QueryResponse
         {
             [JsonProperty("data")]
-            public QueryData Data { get; set; }
+            public ResponseData Data { get; set; }
         }
 
-        class QueryData
+        class ResponseData
         {
             [JsonProperty("teams")]
             public List<TeamScore> Teams { get; set; }
         }
-        
+
+        class MutationRequest
+        {
+            readonly int _teamNumber;
+
+            public MutationRequest(TeamColor team) => _teamNumber = (int)team;
+
+            [JsonProperty("query")]
+            public string Query => "{incrementPoints(id:" + _teamNumber + "){name,points}}";
+        }
+
         class MutationResponse
         {
             [JsonProperty("data")]
