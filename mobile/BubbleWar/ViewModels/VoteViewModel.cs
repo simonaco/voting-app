@@ -1,8 +1,10 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
+
+using AsyncAwaitBestPractices;
+using AsyncAwaitBestPractices.MVVM;
 
 using Xamarin.Forms;
 
@@ -10,6 +12,10 @@ namespace BubbleWar
 {
     public class VoteViewModel : BaseViewModel
     {
+        #region Constant Fields
+        readonly WeakEventManager<string> _graphQLConnectionFailedEventManager = new WeakEventManager<string>();
+        #endregion
+
         #region Fields
         List<TeamScore> _teamScoreCollection = new List<TeamScore>();
         ICommand _voteButtonCommand, _startUpdateScoreTimerCommand, _updateScoreCommand;
@@ -20,17 +26,21 @@ namespace BubbleWar
         #endregion
 
         #region Events
-        public event EventHandler<string> GraphQLConnectionFailed;
+        public event EventHandler<string> GraphQLConnectionFailed
+        {
+            add => _graphQLConnectionFailedEventManager.AddEventHandler(value);
+            remove => _graphQLConnectionFailedEventManager.RemoveEventHandler(value);
+        }
         #endregion
 
         #region Properties
         public ICommand VoteButtonCommand => _voteButtonCommand ??
-            (_voteButtonCommand = new Command<TeamColor>(async teamColor => await ExecuteVoteButtonCommand(teamColor).ConfigureAwait(false)));
+            (_voteButtonCommand = new AsyncCommand<TeamColor>(ExecuteVoteButtonCommand, continueOnCapturedContext: false));
 
         public ICommand StartUpdateScoreTimerCommand => _startUpdateScoreTimerCommand ??
         (_startUpdateScoreTimerCommand = new Command(() => Device.StartTimer(TimeSpan.FromSeconds(1), () =>
         {
-            UpdateScoreCommand?.Execute(null);
+            UpdateScores().SafeFireAndForget();
             return GraphQLSettings.ShouldUpdateChartAutomatically;
         })));
 
@@ -39,9 +49,6 @@ namespace BubbleWar
             get => _teamScoreCollection;
             set => SetProperty(ref _teamScoreCollection, value);
         }
-
-        ICommand UpdateScoreCommand => _updateScoreCommand ??
-            (_updateScoreCommand = new Command(async () => await UpdateScores().ConfigureAwait(false)));
         #endregion
 
         #region Methods
@@ -78,7 +85,7 @@ namespace BubbleWar
             }
         }
 
-        void OnGraphQLConnectionFailed(string message) => GraphQLConnectionFailed?.Invoke(this, message);
+        void OnGraphQLConnectionFailed(string message) => _graphQLConnectionFailedEventManager?.HandleEvent(this, message, nameof(GraphQLConnectionFailed));
         #endregion
     }
 }

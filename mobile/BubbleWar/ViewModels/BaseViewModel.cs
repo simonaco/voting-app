@@ -3,12 +3,22 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
+using AsyncAwaitBestPractices;
+
 namespace BubbleWar
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        #region Constant Fields
+        readonly WeakEventManager _notifyPropertyChangedEventManager = new WeakEventManager();
+        #endregion
+
         #region Events
-        public event PropertyChangedEventHandler PropertyChanged;
+        event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
+        {
+            add => _notifyPropertyChangedEventManager.AddEventHandler(value);
+            remove => _notifyPropertyChangedEventManager.RemoveEventHandler(value);
+        }
         #endregion
 
         #region Methods
@@ -25,7 +35,7 @@ namespace BubbleWar
         }
 
         void OnPropertyChanged([CallerMemberName]string name = "") =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            _notifyPropertyChangedEventManager?.HandleEvent(this, new PropertyChangedEventArgs(name), nameof(INotifyPropertyChanged.PropertyChanged));
         #endregion
     }
 }

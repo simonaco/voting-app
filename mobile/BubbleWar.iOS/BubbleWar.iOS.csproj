@@ -169,6 +169,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
       <Version>16.4.0.46</Version>
     </PackageReference>
+    <PackageReference Include="AsyncAwaitBestPractices.MVVM">
+      <Version>2.1.0-pre1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="..\BubbleWar.Shared\BubbleWar.Shared.projitems" Label="Shared" Condition="Exists('..\BubbleWar.Shared\BubbleWar.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
