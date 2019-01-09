@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace BubbleWar
 {
-    public class TeamScorePieChart : SfChart
+    class TeamScorePieChart : SfChart
     {
         #region Constant Fields
         public static readonly BindableProperty ItemSourceProperty =

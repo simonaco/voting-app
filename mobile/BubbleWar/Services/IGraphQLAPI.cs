@@ -8,9 +8,9 @@ namespace BubbleWar
     interface IGraphQLAPI
     {
         [Post("")]
-        Task<QueryResponse> Query([Body] QueryRequest request);
+        Task<GraphQLResponse<TeamsQueryDataResponse>> TeamsQuery([Body] GraphQLRequest request);
 
         [Post("")]
-        Task<MutationResponse> Mutation([Body] MutationRequest request);
+        Task<GraphQLResponse<IncrementPointsDataResponse>> IncrementPoints([Body] GraphQLRequest request);
     }
 }

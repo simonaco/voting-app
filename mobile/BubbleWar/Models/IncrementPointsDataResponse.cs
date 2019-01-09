@@ -2,7 +2,7 @@
 
 namespace BubbleWar
 {
-    class MutationData
+    class IncrementPointsDataResponse
     {
         [JsonProperty("incrementPoints")]
         public TeamScore TeamScore { get; set; }

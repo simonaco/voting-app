@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace BubbleWar
 {
-    public class VoteViewModel : BaseViewModel
+    class VoteViewModel : BaseViewModel
     {
         #region Constant Fields
         readonly WeakEventManager<string> _graphQLConnectionFailedEventManager = new WeakEventManager<string>();

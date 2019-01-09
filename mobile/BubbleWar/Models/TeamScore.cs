@@ -2,7 +2,7 @@
 
 namespace BubbleWar
 {
-    public class TeamScore
+    class TeamScore
     {
         [JsonProperty("name")]
         public TeamColor Color { get; set; }

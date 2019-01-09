@@ -31,5 +31,6 @@
         <Folder Include="ViewModels\" />
         <Folder Include="Constants\" />
         <Folder Include="Views\" />
+        <Folder Include="Models\GraphQL Models\" />
     </ItemGroup>
 </Project>

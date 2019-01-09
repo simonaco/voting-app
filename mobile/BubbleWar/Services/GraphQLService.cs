@@ -8,7 +8,7 @@ using Polly;
 
 namespace BubbleWar
 {
-    public abstract class GraphQLService
+    static class GraphQLService
     {
         #region Constant Fields
         readonly static Lazy<IGraphQLAPI >_graphQLApiClientHolder = new Lazy<IGraphQLAPI>(()=> RestService.For<IGraphQLAPI>(BubbleWarUrl));
@@ -22,7 +22,9 @@ namespace BubbleWar
         #region Methods
         public static async Task<List<TeamScore>> GetTeamScoreList()
         {
-            var response = await ExecutePollyFunction(() => GraphQLApiClient.Query(new QueryRequest())).ConfigureAwait(false);
+            const string requestString = "query{teams{name, points}";
+
+            var response = await ExecutePollyFunction(() => GraphQLApiClient.TeamsQuery(new GraphQLRequest(requestString))).ConfigureAwait(false);
 
             if (response.Errors != null)
                 throw new AggregateException(response.Errors.Select(x => new Exception(x.Message)));
@@ -32,7 +34,9 @@ namespace BubbleWar
 
         public static async Task<TeamScore> VoteForTeamAndGetCurrentScore(TeamColor teamType)
         {
-            var response = await ExecutePollyFunction(() => GraphQLApiClient.Mutation(new MutationRequest(teamType))).ConfigureAwait(false);
+            var requestString = "mutation {incrementPoints(id:" + (int)teamType + ") {name, points}}";
+
+            var response = await ExecutePollyFunction(() => GraphQLApiClient.IncrementPoints(new GraphQLRequest(requestString))).ConfigureAwait(false);
 
             if (response.Errors != null)
                 throw new AggregateException(response.Errors.Select(x => new Exception(x.Message)));

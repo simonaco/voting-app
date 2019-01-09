@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace BubbleWar
 {
-    class ResponseData
+    class TeamsQueryDataResponse
     {
         [JsonProperty("teams")]
         public List<TeamScore> Teams { get; set; }
