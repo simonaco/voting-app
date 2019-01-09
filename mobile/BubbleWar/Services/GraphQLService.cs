@@ -22,21 +22,21 @@ namespace BubbleWar
         #region Methods
         public static async Task<List<TeamScore>> GetTeamScoreList()
         {
-            const string requestString = "query{teams{name, points}";
+            const string requestString = "query{teams{name, points}}";
 
-            var response = await ExecutePollyFunction(() => GraphQLApiClient.TeamsQuery(new GraphQLRequest(requestString))).ConfigureAwait(false);
+            var request = await ExecutePollyFunction(() => GraphQLApiClient.TeamsQuery(new GraphQLRequest(requestString))).ConfigureAwait(false);
 
-            if (response.Errors != null)
-                throw new AggregateException(response.Errors.Select(x => new Exception(x.Message)));
+            if (request.Errors != null)
+                throw new AggregateException(request.Errors.Select(x => new Exception(x.Message)));
 
-            return response.Data.Teams;
+            return request.Data.Teams;
         }
 
         public static async Task<TeamScore> VoteForTeamAndGetCurrentScore(TeamColor teamType)
         {
-            var requestString = "mutation {incrementPoints(id:" + (int)teamType + ") {name, points}}";
+            var request = "mutation {incrementPoints(id:" + (int)teamType + ") {name, points}}";
 
-            var response = await ExecutePollyFunction(() => GraphQLApiClient.IncrementPoints(new GraphQLRequest(requestString))).ConfigureAwait(false);
+            var response = await ExecutePollyFunction(() => GraphQLApiClient.IncrementPoints(new GraphQLRequest(request))).ConfigureAwait(false);
 
             if (response.Errors != null)
                 throw new AggregateException(response.Errors.Select(x => new Exception(x.Message)));
