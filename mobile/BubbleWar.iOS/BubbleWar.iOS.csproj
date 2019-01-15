@@ -153,21 +153,30 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.2.0.729530-pre2" />
+    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1009999" />
     <PackageReference Include="Newtonsoft.Json">
-      <Version>11.0.2</Version>
+      <Version>12.0.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Essentials">
-      <Version>0.10.0-preview</Version>
+      <Version>1.0.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Crashes">
-      <Version>1.9.0</Version>
+      <Version>1.12.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Analytics">
-      <Version>1.9.0</Version>
+      <Version>1.12.0</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
-      <Version>16.2.0.50</Version>
+      <Version>16.4.0.46</Version>
+    </PackageReference>
+    <PackageReference Include="AsyncAwaitBestPractices.MVVM">
+      <Version>2.1.0-pre1</Version>
+    </PackageReference>
+    <PackageReference Include="Refit">
+      <Version>4.6.58</Version>
+    </PackageReference>
+    <PackageReference Include="Polly">
+      <Version>6.1.2</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="..\BubbleWar.Shared\BubbleWar.Shared.projitems" Label="Shared" Condition="Exists('..\BubbleWar.Shared\BubbleWar.Shared.projitems')" />

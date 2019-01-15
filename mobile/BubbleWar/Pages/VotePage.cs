@@ -2,7 +2,7 @@
 
 namespace BubbleWar
 {
-    public class VotePage : BaseContentPage<VoteViewModel>
+    class VotePage : BaseContentPage<VoteViewModel>
     {
         public VotePage()
         {

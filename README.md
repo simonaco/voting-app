@@ -7,7 +7,7 @@ GraphiQL endpoint:
 
 Sample query:
 
-```json
+```
 query {
   teams {
     id
@@ -19,7 +19,7 @@ query {
 
 Sample mutation:
 
-```json
+```
 mutation {
   incrementPoints(id:2) {
     id
@@ -68,4 +68,4 @@ Import ApolloProvider component from react-apollo & set the client property to t
 | Mobile OS | Installation Link |
 |-----------|-------------------|
 | iOS | [Install iOS App](./mobile/iOS_Download_Instructions.md) |
-| Android | [Install Android App](https://install.appcenter.ms/orgs/bubble-war/apps/bubble-war/distribution_groups/sf%20graphql%20workshop) |
+| Android | [Install Android App](https://install.appcenter.ms/orgs/bubble-war/apps/bubble-war/distribution_groups/london%20graphql%20workshop) |
