@@ -84,6 +84,6 @@ npm install
 
 ### More resources
 
-1. To learn more about Azure Functions checkout this awesome docs [page](https://aka.ms/functions-nceu18)
+1. To learn more about Azure Functions checkout this awesome docs [page](https://docs.microsoft.com/en-us/azure/azure-functions/?WT.mc_id=workshop-ldnjs-sicotin)
 
-1. To learn more about Azure Cosmos DB checkout this awesome docs [page](https://aka.ms/cosmos-nceu18)
+1. To learn more about Azure Cosmos DB checkout this awesome docs [page](https://docs.microsoft.com/en-us/azure/cosmos-db/?WT.mc_id=workshop-ldnjs-sicotin)

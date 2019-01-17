@@ -15,7 +15,7 @@ npm i -g http-server
 
 ### Extra steps
 
-1. Deploy this as a static website in the cloud. You can use Azure Blob Storage following [steps here](https://aka.ms/static-nceu18)
+1. Deploy this as a static website in the cloud. You can use Azure Blob Storage following [steps here](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website?WT.mc_id=workshop-ldnjs-sicotin)
 
 1. In your function app configure proxies to redirect traffic to your GraphiQL app
 
@@ -46,4 +46,4 @@ npm i -g http-server
 
 1. To learn more about GraphiQL go to [GraphiQL](https://github.com/graphql/graphiql)
 
-1. To learn more about proxies go to [Azure Proxies](https://aka.ms/proxies-nceu18)
+1. To learn more about proxies go to [Azure Proxies](https://docs.microsoft.com/en-us/azure/azure-functions/functions-proxies?WT.mc_id=workshop-ldnjs-sicotin)
