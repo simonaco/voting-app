@@ -67,5 +67,5 @@ Import ApolloProvider component from react-apollo & set the client property to t
 
 | Mobile OS | Installation Link |
 |-----------|-------------------|
-| iOS | [Install iOS App](./mobile/iOS_Download_Instructions.md) |
+| iOS | [Install iOS App](./mobile/VotingApp/iOS_Download_Instructions.md) |
 | Android | [Install Android App](https://install.appcenter.ms/orgs/voting-app/apps/bubble-war/distribution_groups/london%20graphql%20workshop) |
