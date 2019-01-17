@@ -184,7 +184,7 @@
       <HintPath>..\packages\Xamarin.Android.Support.CustomTabs.28.0.0\lib\monoandroid90\Xamarin.Android.Support.CustomTabs.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Essentials">
-      <HintPath>..\packages\Xamarin.Essentials.1.0.0\lib\monoandroid81\Xamarin.Essentials.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Essentials.1.0.1\lib\monoandroid81\Xamarin.Essentials.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors" />
@@ -210,28 +210,28 @@
       <HintPath>..\packages\Plugin.CurrentActivity.2.1.0.4\lib\monoandroid44\Plugin.CurrentActivity.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Licensing">
-      <HintPath>..\packages\Syncfusion.Licensing.16.4.0.46\lib\MonoAndroid10\Syncfusion.Licensing.dll</HintPath>
+      <HintPath>..\packages\Syncfusion.Licensing.16.4.0.47\lib\MonoAndroid10\Syncfusion.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Core.XForms.Android">
-      <HintPath>..\packages\Syncfusion.Xamarin.Core.16.4.0.46\lib\MonoAndroid10\Syncfusion.Core.XForms.Android.dll</HintPath>
+      <HintPath>..\packages\Syncfusion.Xamarin.Core.16.4.0.47\lib\MonoAndroid10\Syncfusion.Core.XForms.Android.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Core.XForms">
-      <HintPath>..\packages\Syncfusion.Xamarin.Core.16.4.0.46\lib\MonoAndroid10\Syncfusion.Core.XForms.dll</HintPath>
+      <HintPath>..\packages\Syncfusion.Xamarin.Core.16.4.0.47\lib\MonoAndroid10\Syncfusion.Core.XForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.XForms.Android">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfChart.16.4.0.46\lib\MonoAndroid10\Syncfusion.SfChart.XForms.Android.dll</HintPath>
+      <HintPath>..\packages\Syncfusion.Xamarin.SfChart.16.4.0.47\lib\MonoAndroid10\Syncfusion.SfChart.XForms.Android.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.XForms">
-      <HintPath>..\packages\Syncfusion.Xamarin.SfChart.16.4.0.46\lib\MonoAndroid10\Syncfusion.SfChart.XForms.dll</HintPath>
+      <HintPath>..\packages\Syncfusion.Xamarin.SfChart.16.4.0.47\lib\MonoAndroid10\Syncfusion.SfChart.XForms.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="AsyncAwaitBestPractices">
-      <HintPath>..\packages\AsyncAwaitBestPractices.2.1.0-pre1\lib\netstandard\AsyncAwaitBestPractices.dll</HintPath>
+      <HintPath>..\packages\AsyncAwaitBestPractices.2.1.0\lib\netstandard\AsyncAwaitBestPractices.dll</HintPath>
     </Reference>
     <Reference Include="AsyncAwaitBestPractices.MVVM">
-      <HintPath>..\packages\AsyncAwaitBestPractices.MVVM.2.1.0-pre1\lib\netstandard\AsyncAwaitBestPractices.MVVM.dll</HintPath>
+      <HintPath>..\packages\AsyncAwaitBestPractices.MVVM.2.1.0\lib\netstandard\AsyncAwaitBestPractices.MVVM.dll</HintPath>
     </Reference>
     <Reference Include="Polly">
       <HintPath>..\packages\Polly.6.1.2\lib\netstandard2.0\Polly.dll</HintPath>
