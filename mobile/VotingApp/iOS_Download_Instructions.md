@@ -16,7 +16,7 @@ Users familiar with Xamarin are welcome to download the source code in this GitH
 
 ![App Center Registration](https://user-images.githubusercontent.com/13558917/42402275-94801690-812e-11e8-8000-655b7f2f7ae7.png)
 
-## 2. Register for the App Center Group: Bubble War
+## 2. Register for the App Center Group: Voting App
 
 Each attendee will need to register with App Center
 
@@ -26,13 +26,14 @@ Each attendee will need to register with App Center
     - Subject: Intro to GraphQL App Center Registration Request
     - Body: [Blank]
 
-2. On your iOS device, open the email invite
-3. On your iOS device, select the **Sign Up** link in the email
+2. Standby until the email invite arrives
+3. On your iOS device, open the email invite
+4. On your iOS device, select the **Sign Up** link in the email
     - **Note**: The sign up link must be opened in Safari. Other browsers, like Chrome, are incompatible.
 
-![App Center Invitation Email](https://user-images.githubusercontent.com/13558917/44817344-0ca12200-ab9a-11e8-8a41-946853714252.png)
+![App Center Invitation Email](https://user-images.githubusercontent.com/13558917/51314485-af721400-1a47-11e9-860b-ffaae2e2bf55.png)
 
-3. In the browser page that opened automatically, tap **Accept Invitation**
+5. In the browser page that opened automatically, tap **Accept Invitation**
 
 ## 3. Register iOS Device
 
@@ -65,21 +66,21 @@ Apple does not allow users to download iOS apps that have not been previously re
 <img alt="Popup dialog" src="https://user-images.githubusercontent.com/13558917/42534697-3d8a9862-8442-11e8-9524-a8c2149d1f02.png" width="200px">
 
 9. Once the installation has completed, the device will return you back to the App Center Install page in Safari
-10. On the installation page in Safari, tap on **Bubble War**
+10. On the installation page in Safari, tap on **Voting App**
 
-<img alt="Bubble War, iOS" src="https://user-images.githubusercontent.com/13558917/44817831-8c7bbc00-ab9b-11e8-9995-b491ee8d914f.png" width="200px">
+<img alt="Voting App, iOS" src="https://user-images.githubusercontent.com/13558917/51314224-425e7e80-1a47-11e9-8155-11ce6a2958ee.png" width="200px">
 
-11. On the installation page, tap **Get**. 
+11. On the installation page, tap **Get**.
 
-<img alt="Get App" src="https://user-images.githubusercontent.com/13558917/44881974-4f303080-ac66-11e8-8968-b24d6d507f13.png" width="200px">
+<img alt="Get App" src="https://user-images.githubusercontent.com/13558917/51314231-42f71500-1a47-11e9-9bad-2e2ce9c4edfb.png" width="200px">
 
 12. Stand by while App Center prepares the app for download
     - **Note:** This may take 5-10 minutes
 
-<img alt="Preparing App" src="https://user-images.githubusercontent.com/13558917/44881888-1001df80-ac66-11e8-8fdf-ac34b9f9478b.PNG" width="200px">
+<img alt="Preparing App" src="https://user-images.githubusercontent.com/13558917/51314219-41c5e800-1a47-11e9-80bd-4c8efffaff1b.png" width="200px">
 
 13. Once prepartation has finished, tap **Install**
 
-<img alt="Preparing App" src="https://user-images.githubusercontent.com/13558917/44882083-bcdc5c80-ac66-11e8-8819-04826982a1b5.png" width="200px">
+<img alt="Preparing App" src="https://user-images.githubusercontent.com/13558917/51314221-41c5e800-1a47-11e9-8a0c-0f40994b678f.png" width="200px">
 
 14. The app is now installing to the iOS home screen
