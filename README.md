@@ -1,4 +1,4 @@
-# Bubble War
+# Voting App
 
 In this workshop we'll build a Serverless GraphQL endpoint for an existing voting API.
 
