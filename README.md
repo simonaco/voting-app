@@ -1,5 +1,29 @@
 # Bubble War
 
+In this workshop we'll build a Serverless GraphQL endpoint for an existing voting API.
+
+## Prerequisites
+
+1. A recent version of Node (8+)
+
+1. VS Code: [download page](https://code.visualstudio.com/download/?WT.mc_id=workshop-ldnjs-sicotin)  
+
+1. Azure Functions CLI: [documentation](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?WT.mc_id=workshop-ldnjs-sicotin)  
+
+1. Azure Functions Extension for VS Code: [marketplace](https://marketplace.visualstudio.com/items/?WT.mc_id=workshop-ldnjs-sicotin&itemName=ms-azuretools.vscode-azurefunctions)  
+
+1. Azure account: [https://aka.ms/free](https://aka.ms/free)
+
+## Steps
+
+1. Create your own services following steps on [services readme](https://github.com/simonaco/serverless-graphql-workshop/blob/master/services/Readme.md)
+
+1. Create GraphQL endpoint following steps on [api readme](https://github.com/simonaco/serverless-graphql-workshop/blob/master/graphql-api/Readme.md)
+
+1. Add GraphiQL UI using steps in [readme](https://github.com/simonaco/serverless-graphql-workshop/blob/master/graphiql/Readme.md)
+
+## Demo app
+
 GraphQL endpoint: [https://graphqlplayground.azurewebsites.net/api/graphql](https://graphqlplayground.azurewebsites.net/api/graphql)
 
 GraphiQL endpoint:
@@ -28,34 +52,6 @@ mutation {
   }
 }
 ```
-
-React client:
-1. install create-react-app 
-2. create new app npx create-react-app
-3. run app using npm start
-4. install npm packages: npm i apollo-boost react-apollo graphql graphql-tag
-
-Import ApolloClient from apollo-boost
-Initialize client using local (deployed) function URL
-Test endpoint works by running query:
-
-```javascript
-client
-  .query({
-    query: gql`
-      {
-        teams {
-          id
-        }
-      }
-    `
-  })
-  .then(result => console.log(result));
-```
-
-Import ApolloProvider component from react-apollo & set the client property to the client you created earlier
-
-
 
 |CI Tool                    |Build Status|
 |---------------------------|---|
