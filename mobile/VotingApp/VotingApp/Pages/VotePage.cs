@@ -1,5 +1,7 @@
-﻿using Xamarin.Forms;
-using System;
+﻿using System;
+using System.Collections.Generic;
+
+using Xamarin.Forms;
 
 namespace VotingApp
 {
@@ -73,7 +75,8 @@ namespace VotingApp
 
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await DisplayAlert("GraphQL Connection Failed", message, "OK");
+                await DisplayAlert("Could Not Connect to GraphQL Endpoint", "Auto-Update Disabled\n\nRe-enable Auto-Update in Settings", "OK");
+
                 ViewModel.GraphQLConnectionFailed += HandleGraphQLConnectionFailed;
             });
         }
