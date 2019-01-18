@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/sicotin/sicotin/_apis/build/status/simonaco.voting-app?branchName=master)](https://dev.azure.com/sicotin/sicotin/_build/latest?definitionId=11?branchName=master)
+
 # Voting App
 
 In this workshop we'll build a Serverless GraphQL endpoint for an existing voting API.
