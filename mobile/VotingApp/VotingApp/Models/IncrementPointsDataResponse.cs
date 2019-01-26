@@ -4,7 +4,9 @@ namespace VotingApp
 {
     class IncrementPointsDataResponse
     {
+        public IncrementPointsDataResponse(TeamScore teamScore) => TeamScore = teamScore;
+
         [JsonProperty("incrementPoints")]
-        public TeamScore TeamScore { get; set; }
+        public TeamScore TeamScore { get; }
     }
 }
