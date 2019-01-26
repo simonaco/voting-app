@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,13 +11,12 @@ namespace VotingApp
 {
     static class GraphQLService
     {
-        #region Constant Fields
-        readonly static Lazy<IGraphQLAPI> _graphQLApiClientHolder = new Lazy<IGraphQLAPI>(() => RestService.For<IGraphQLAPI>(BubbleWarUrl));
+        #region Fields
+        static IGraphQLAPI _graphQLApiClient = CreateGraphQLAPIClient(GraphQLSettings.Uri);
         #endregion
 
-        #region Properties
-        static string BubbleWarUrl => GraphQLSettings.Uri.ToString();
-        static IGraphQLAPI GraphQLApiClient => _graphQLApiClientHolder.Value;
+        #region Constructors
+        static GraphQLService() => GraphQLSettings.UriChanged += HandleUriChanged;
         #endregion
 
         #region Methods
@@ -24,7 +24,7 @@ namespace VotingApp
         {
             const string requestString = "query{teams{name, points}}";
 
-            var data = await ExecuteGraphQLFunction(() => GraphQLApiClient.TeamsQuery(new GraphQLRequest(requestString))).ConfigureAwait(false);
+            var data = await ExecuteGraphQLFunction(() => _graphQLApiClient.TeamsQuery(new GraphQLRequest(requestString))).ConfigureAwait(false);
 
             return data.Teams;
         }
@@ -33,7 +33,7 @@ namespace VotingApp
         {
             var request = "mutation {incrementPoints(id:" + (int)teamType + ") {name, points}}";
 
-            var data = await ExecuteGraphQLFunction(() => GraphQLApiClient.IncrementPoints(new GraphQLRequest(request))).ConfigureAwait(false);
+            var data = await ExecuteGraphQLFunction(() => _graphQLApiClient.IncrementPoints(new GraphQLRequest(request))).ConfigureAwait(false);
 
             return data.TeamScore;
         }
@@ -57,6 +57,10 @@ namespace VotingApp
 
             TimeSpan pollyRetryAttempt(int attemptNumber) => TimeSpan.FromSeconds(Math.Pow(2, attemptNumber));
         }
+
+        static void HandleUriChanged(object sender, Uri uri) => _graphQLApiClient = CreateGraphQLAPIClient(uri);
+
+        static IGraphQLAPI CreateGraphQLAPIClient(Uri uri) => RestService.For<IGraphQLAPI>(new HttpClient { BaseAddress = uri });
         #endregion
     }
 }
