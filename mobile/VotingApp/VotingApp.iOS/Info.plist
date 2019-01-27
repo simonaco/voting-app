@@ -21,7 +21,7 @@
 	<key>MinimumOSVersion</key>
 	<string>9.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>VotingApp</string>
+	<string>Voting&#x2007;App</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.minnick.VotingApp</string>
 	<key>CFBundleVersion</key>
