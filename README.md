@@ -1,4 +1,4 @@
-[![Build Status](https://dev.azure.com/sicotin/sicotin/_apis/build/status/simonaco.voting-app?branchName=master)](https://dev.azure.com/sicotin/sicotin/_build/latest?definitionId=11?branchName=master)
+[![Build Status](https://dev.azure.com/sicotin/sicotin/_apis/build/status/simonaco.voting-app?branchName=master)](https://dev.azure.com/sicotin/sicotin/_build/latest?definitionId=11%3FbranchName%3Dmaster&WT.mc_id=votingapp-github-sicotin)
 
 # Voting App
 
