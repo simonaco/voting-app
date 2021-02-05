@@ -8,11 +8,11 @@ In this workshop we'll build a Serverless GraphQL endpoint for an existing votin
 
 1. A recent version of Node (8+)
 
-1. VS Code: [download page](https://code.visualstudio.com/download/?WT.mc_id=workshop-ldnjs-sicotin)  
+1. VS Code: [download page](https://code.visualstudio.com/download/?WT.mc_id=startup-0000-sicotin)  
 
-1. Azure Functions CLI: [documentation](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?WT.mc_id=workshop-ldnjs-sicotin)  
+1. Azure Functions CLI: [documentation](https://docs.microsoft.com/azure/azure-functions/functions-run-local?WT.mc_id=startup-0000-sicotin)  
 
-1. Azure Functions Extension for VS Code: [marketplace](https://marketplace.visualstudio.com/items/?WT.mc_id=workshop-ldnjs-sicotin&itemName=ms-azuretools.vscode-azurefunctions)  
+1. Azure Functions Extension for VS Code: [marketplace](https://marketplace.visualstudio.com/items/?WT.mc_id=startup-0000-sicotin&itemName=ms-azuretools.vscode-azurefunctions)  
 
 1. Azure account: [https://aka.ms/free](https://aka.ms/free)
 
